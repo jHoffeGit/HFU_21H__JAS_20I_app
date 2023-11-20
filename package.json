@@ -1,0 +1,14 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "description": "first project",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Janik Hoffmann",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
