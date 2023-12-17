@@ -28,7 +28,7 @@ describe("LK1", () => {
     test("extract first and last letters of empty string", () => {
       const test = "";
 
-      expect(getFirstAndLastLetters(test)).toBe({ first: undefined, last: undefined });
+      expect(getFirstAndLastLetters(test)).toStrictEqual({ first: undefined, last: undefined });
     });
   });
 
@@ -48,7 +48,7 @@ describe("LK1", () => {
     test("extract first and last letters of empty string", () => {
       const test = "";
 
-      expect(getFirstAndLastLetters(test)).toBe({ first: undefined, last: undefined });
+      expect(getFirstAndLastLetters(test)).toStrictEqual({ first: undefined, last: undefined });
     });
 
     test("capitalize all elements", () => {
@@ -273,7 +273,7 @@ describe("LK1", () => {
       const birthDate = new Date(2000, 7, 1);
       const schoolName = "HFU";
 
-      const teacher = new Person(firstName, middleName, lastName, birthDate, schoolName);
+      const teacher = new Teacher(firstName, middleName, lastName, birthDate, schoolName);
 
       expect(teacher.firstName).toBe(firstName);
       expect(teacher.middleName).toBe(middleName);
@@ -289,7 +289,7 @@ describe("LK1", () => {
       const birthDate = new Date(2000, 7, 1);
       const schoolName = "HFU";
 
-      const teacher = new Teacher(firstName, middleName, lastName, birthDate);
+      const teacher = new Teacher(firstName, middleName, lastName, birthDate, schoolName);
 
       expect(teacher.firstName).toBe(firstName);
       expect(teacher.middleName).toBe(middleName);

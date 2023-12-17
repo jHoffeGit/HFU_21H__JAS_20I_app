@@ -1,17 +1,27 @@
 export class Person {
-  constructor(firstName, lastName) {
+  constructor(firstName, middleName, lastName, birthDate) {
     this.firstName = firstName ?? "John";
+    this.middleName = middleName ?? "Q.";
     this.lastName = lastName ?? "Doe";
+    this.birthDate = birthDate ?? new Date(1990, 1, 1);
   }
 
   fullName() {
-    return `${this.firstName} ${this.lastName}`;
+    return `${this.firstName} ${this.middleName} ${this.lastName}`;
+  }
+
+  age() {
+    return new Date().getFullYear() - this.birthDate.getFullYear();
+  }
+
+  toString() {
+    return this.fullName();
   }
 }
 
 export class Teacher extends Person {
-  constructor(firstName, lastName, schoolName) {
-    super(firstName, lastName);
+  constructor(firstName, middleName, lastName, birthDate, schoolName) {
+    super(firstName, middleName, lastName, birthDate);
     this.schoolName = schoolName ?? "unknown";
   }
 
@@ -24,13 +34,12 @@ export function getFirstAndLastLetters(test) {
   
   return {
     first: test.at(0),
-    last: test.slice(-1),
+    last: test.at(-1),
   };
 }
 
 export function getReverse(test) {
-
-  return test.reverse();
+  return [...test].reverse().join("");
 }
 
 export function getCapitalized(test) {
@@ -38,8 +47,7 @@ export function getCapitalized(test) {
 }
 
 export function getOddCapitalized(test) {
-  
-  return test.map(t => t.toUpperCase());
+  return test.map((t, i) => (i % 2 === 1 ? t.toUpperCase() : t));
 }
 
 export const getFibonacci = n => {
@@ -57,20 +65,24 @@ export const getFibonacci = n => {
 export function* getFibonacciSequence() {
   let i = 0;
   while (i >= 0) {
-    yield 0;
+    yield getFibonacci(i);
 
     i += 1;
   }
 }
 
 export function getCopyOfArray(a) {
-  return a;
+  return [...a];
 }
 
 export function getJsonWithNiceFormattingAndNoNumbers(obj) {
-  return JSON.stringify(obj, (k, v) => {
-    return v;
-  });
+  return JSON.stringify(
+    obj,
+    (k, v) => {
+      return typeof v === "number" ? undefined : v;
+    },
+    2,
+  );
 }
 
 export function getPropertyNames(obj) {
